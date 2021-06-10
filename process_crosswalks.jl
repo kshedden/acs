@@ -10,10 +10,10 @@ cw = xf["TRACT_ZIP_032021"][:]
 
 # Make a map from tracts to zip codes.
 tz = Dict{String,String}()
-for i in 2:size(cw, 1)
-	tz[cw[i, 1]] = cw[i, 2]
+for i = 2:size(cw, 1)
+    tz[cw[i, 1]] = cw[i, 2]
 end
 
 GZip.open("crosswalks/tract_zip.jls.gz", "w") do io
-	Serialization.serialize(io, tz)
+    Serialization.serialize(io, tz)
 end
